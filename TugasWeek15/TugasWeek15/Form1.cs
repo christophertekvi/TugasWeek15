@@ -99,9 +99,7 @@ namespace TugasWeek15
                         radioButtonMinum.Checked = false;
                     }
                 }
-
             }
-
         }
 
         private void buttonMasukin_Click(object sender, EventArgs e)

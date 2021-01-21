@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace TugasWeek15
 {
-    public partial class Form1 : Form
+    public partial class FormUtama : Form
     {
-        public Form1()
+        public FormUtama()
         {
             InitializeComponent();
         }
@@ -22,7 +22,7 @@ namespace TugasWeek15
         public static int countermakan = 4;
         public static int counterminum = 3;
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void FormUtama_Load(object sender, EventArgs e)
         {
             makanan[0] = "Mie Instan";
             makanan[1] = "Telor";
@@ -78,7 +78,7 @@ namespace TugasWeek15
                         radioButtonMakan.Checked = false;
                         radioButtonMinum.Checked = false;
                     }
-                    
+
                 }
                 if (radioButtonMinum.Checked == true)
                 {
@@ -92,54 +92,120 @@ namespace TugasWeek15
                     else
                     {
                         counterminum++;
-                        makanan[counterminum] = textBoxInput.Text;
+                        minuman[counterminum] = textBoxInput.Text;
                         listBoxKiri.Items.Add(textBoxInput.Text);
                         textBoxInput.Text = "";
                         radioButtonMakan.Checked = false;
                         radioButtonMinum.Checked = false;
                     }
                 }
-                
+
             }
-            
+
         }
 
         private void buttonMasukin_Click(object sender, EventArgs e)
         {
-            foreach (object beverage in listBoxKiri.SelectedItems)
+            for (int i = 0; i < listBoxKiri.SelectedIndices.Count - 1; i++)
             {
-                listBoxKanan.Items.Add(beverage);
+                if (!listBoxKanan.Items.Contains(listBoxKiri.SelectedItems[i]))
+                {
+                    listBoxKanan.Items.Add(listBoxKiri.SelectedItems[i]);
+                }
             }
-
+            listBoxKiri.ClearSelected();
+            checkBoxMakan.Checked = false;
+            checkBoxMakan.Checked = false;
         }
         private void buttonHapus_Click(object sender, EventArgs e)
         {
-
+            if (listBoxKanan.SelectedItems.Count == 0)
+            {
+                listBoxKanan.Items.Clear();
+            }
+            else
+            {
+                for (int i = listBoxKanan.SelectedIndices.Count - 1; i>= 0; i--)
+                {
+                    listBoxKanan.Items.Remove(listBoxKanan.SelectedItems[i]);
+                }
+                
+            }
+            listBoxKanan.ClearSelected();
         }
 
         private void checkBoxMakan_CheckedChanged(object sender, EventArgs e)
         {
+            int counter = 0;
+            int counter2 = 0;
+            int[] posisimakanan = new int[100];
             if (checkBoxMakan.Checked == true)
             {
-                for (int i = 0; i < minuman.Length; i++)
+                try
                 {
-                    listBoxKiri.Items.Remove(minuman[i]);
+                    foreach (var menu in listBoxKiri.Items)
+                    {
+                        for (int i = 0; i < 100; i++)
+                        {
+                            if (makanan[i] == menu.ToString())
+                            {
+                                posisimakanan[counter2] = counter;
+                                counter2++;
+                            }
+                        }
+                        counter++;
+                    }
                 }
-                
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                for (int i = 0; i < 100; i++)
+                {
+                    listBoxKiri.SetSelected(posisimakanan[i], true);
+                }
             }
             if (checkBoxMakan.Checked == false)
             {
-                for (int i = 0; i < minuman.Length; i++)
-                {
-                    listBoxKiri.Items.Add(minuman[i]);
-                }
-
+                listBoxKiri.ClearSelected();
             }
         }
-
         private void checkBoxMinum_CheckedChanged(object sender, EventArgs e)
         {
+            int counter = 0;
+            int counter2 = 0;
+            int[] posisiminum = new int[100];
+            if (checkBoxMinum.Checked == true)
+            {
+                try
+                {
+                    foreach (var menu in listBoxKiri.Items)
+                    {
+                        for (int i = 0; i < 100; i++)
+                        {
 
+                            if (minuman[i] == menu.ToString())
+                            {
+                                posisiminum[counter2] = counter;
+                                counter2++;
+                            }
+                        }
+                        counter++;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                for (int i = 0; i < 100; i++)
+                {
+                    listBoxKiri.SetSelected(posisiminum[i], true);
+                }
+            }
+            if (checkBoxMinum.Checked == false)
+            {
+                listBoxKiri.ClearSelected();
+            }
         }
     }
 }

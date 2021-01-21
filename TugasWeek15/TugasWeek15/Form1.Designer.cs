@@ -1,7 +1,7 @@
 ﻿
 namespace TugasWeek15
 {
-    partial class Form1
+    partial class FormUtama
     {
         /// <summary>
         /// Required designer variable.
@@ -116,6 +116,7 @@ namespace TugasWeek15
             // 
             // listBoxKiri
             // 
+            this.listBoxKiri.DisplayMember = "Makan";
             this.listBoxKiri.FormattingEnabled = true;
             this.listBoxKiri.Location = new System.Drawing.Point(25, 140);
             this.listBoxKiri.Name = "listBoxKiri";
@@ -185,7 +186,7 @@ namespace TugasWeek15
             this.checkBoxMakan.UseVisualStyleBackColor = true;
             this.checkBoxMakan.CheckedChanged += new System.EventHandler(this.checkBoxMakan_CheckedChanged);
             // 
-            // Form1
+            // FormUtama
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -200,9 +201,9 @@ namespace TugasWeek15
             this.Controls.Add(this.labelKategori);
             this.Controls.Add(this.textBoxInput);
             this.Controls.Add(this.labelNmItem);
-            this.Name = "Form1";
+            this.Name = "FormUtama";
             this.Text = "Form Utama";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.FormUtama_Load);
             this.groupBoxJenis.ResumeLayout(false);
             this.groupBoxJenis.PerformLayout();
             this.groupBoxFilter.ResumeLayout(false);

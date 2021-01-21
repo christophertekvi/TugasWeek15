@@ -104,7 +104,7 @@ namespace TugasWeek15
 
         private void buttonMasukin_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < listBoxKiri.SelectedIndices.Count - 1; i++)
+            for (int i = 0; i < listBoxKiri.SelectedIndices.Count; i++)
             {
                 if (!listBoxKanan.Items.Contains(listBoxKiri.SelectedItems[i]))
                 {
@@ -135,6 +135,7 @@ namespace TugasWeek15
         private void checkBoxMakan_CheckedChanged(object sender, EventArgs e)
         {
             int counter = 0;
+
             int counter2 = 0;
             int[] posisimakanan = new int[100];
             if (checkBoxMakan.Checked == true)
@@ -167,6 +168,8 @@ namespace TugasWeek15
             {
                 listBoxKiri.ClearSelected();
             }
+
+
         }
         private void checkBoxMinum_CheckedChanged(object sender, EventArgs e)
         {
